@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Document</title>
+</head>
+<script>
+    function range(start, end) {
+        // Code goes here
+        step = step ? step : start < end ? 1 : -1
+        const array = [];
+        if (step > 0) {
+            for (let index = start; index <= end; index += step) {
+                array.push(index)
+            }
+        } else {
+            for (let index = start; index >= end; index += step) {
+                array.push(index)
+            }
+        }
+
+        return array;
+    }
+    function sum(array) {
+        let total = 0;
+        for (let num of array) {
+            total += num;
+        }
+        return total;
+    }
+
+    console.log(range(1, 5)); // [1, 2, 3, 4, 5]
+
+    console.log(range(1, 10, 2)); // [1, 3, 5, 7, 9]
+
+    console.log(range(5, 2,)); // [5, 4, 3, 2]
+
+    console.log(sum(range(1, 10))); // 55
+
+    function reverseArray(array) {
+        const reversed= [];
+        for (const element of array) {
+            reversed.unshift(element);
+        }
+        return reversed
+    }
+
+    function reverseArrayInPlace(array) {
+        // Code goes here
+        const reversed = reverseArray(array);
+        array.splice(0,array.length, ...reversed);
+        // for (const element of reversed) {
+        //     array.push(element);
+        // }
+    }
+
+    console.log(reverseArray(["A", "B", "C"])); // ["C", "B", "A"]
+
+    let array = [1, 2, 3, 4, 5];
+    reverseArrayInPlace(array);
+
+    console.log(array); // [5, 4, 3, 2, 1]
+
+</script>
+
+</html>
