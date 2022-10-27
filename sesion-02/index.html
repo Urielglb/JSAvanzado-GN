@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Modulo 02 | Sesion 02</title>
+</head>
+<script>
+    
+    const nombres = ["Uriel", "Javier", "Erandi"];
+    const logger = {
+        name: "Logger Helper",
+        log:function(message){
+            console.log(`${this.name}: ${message}`);
+        }
+    }
+
+    for (let index = 0; index < nombres.length; index++) {
+        const name = nombres[index];
+        const wrapperNombre = {
+            name
+        }
+        const log2 = logger.log.bind(wrapperNombre);
+        log2("Cambiando contexto");
+    }
+
+    const primerInscrito = {
+        name: "Uriel",
+        promedio: 6.0,
+        saluda(){
+            console.log(`Hola mi nombre es ${this.name}`);
+        }
+    }
+
+    primerInscrito.saluda();
+
+    const del1Al5 = [1,2,3,4,5];
+
+    const del6al10 = [6,7,8,9,10];
+
+    const del1Al0 = [...del1Al5, ...del6al10];
+
+    const [primero, segundo] = del1Al5;
+
+    console.log(primero, segundo);
+
+    let persona1 = {
+        name: "Uriel",
+        age:22
+    }
+
+    const persona2 = {
+        name: "Juanito Perez",
+        age:20
+    }
+
+    const desarrollador1 = {
+        ...persona1,
+        skill:"Programa JS"
+    }
+
+    persona1 = {
+        ...persona1,
+        age: 23
+    }
+    
+    console.log(desarrollador1);
+
+    console.log(persona1);
+
+    const { skill, name, saluda } = desarrollador1;
+
+    console.log(skill, name, saluda);
+
+    let form = {}
+
+    function actualizaCURP(valor){
+       form = {
+        ...form,
+        curp:valor
+       }
+    }
+
+    const obj1 = {
+        name:"Esto es una prueba"
+    }
+
+    const obj2 = obj1;
+
+    obj2.name = "Referencia"
+
+    console.log(obj1);
+
+
+
+</script>
+</html>
