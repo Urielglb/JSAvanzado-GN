@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sesion 4</title>
+</head>
+<script>
+    //Postwork
+    // Don't alter this function
+    const processAction = (i, callback) => {
+        setTimeout(() => {
+            callback("Processed Action " + i);
+        }, Math.random() * 1000);
+    }
+
+    const triggerActions = (count) => {
+        const promises = [];
+        const generatePromise = (i) => {
+            return new Promise((resolve) => {
+                processAction(i, resolve);
+            });
+        }
+        for (let index = 1; index <= count; index++) {
+            promises.push(generatePromise(index));
+        }
+        Promise.all(promises)
+            .then((strings) =>
+                strings.forEach((string) => console.log(string)));
+    }
+
+    triggerActions(5);
+</script>
+
+</html>
