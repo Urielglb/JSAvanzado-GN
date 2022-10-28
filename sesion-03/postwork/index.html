@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,20 +8,40 @@
 </head>
 <script>
     const saludos = ["Hola", "hello", "Ni hao"];
-    const saludoMultiple = saludos.reduce((anterior, actual, index)=>{
-        return index == saludos.length-1 ? `${anterior} ${actual}` :    `${anterior} ${actual},`
-    },"");
+    const saludoMultiple = saludos.reduce((anterior, actual, index) => {
+        return index == saludos.length - 1 ? `${anterior} ${actual}` : `${anterior} ${actual},`
+    }, "");
     console.log(saludoMultiple);
     // Reto 2
     const numbers = [5, 6, 7, 8]
     const copia = Array.from(Array(Math.max(...numbers)).keys());
-    var mapDeCopia = copia.map((elemento, index)=>{
-        return(numbers.indexOf(index) < 0 && index  )
+    var mapDeCopia = copia.map((elemento, index) => {
+        return (numbers.indexOf(index) < 0 && index)
     });
-    console.log(mapDeCopia.filter(x=>x));
+    console.log(mapDeCopia.filter(x => x));
     // iteradorNumbers.map((elemento, index)=>{
     //     console.log(numbers.indexOf(index));
     // })
-    
+
+    //Aporte de Marvin, desglose de conceptos
+    numbers = [8, 4, 9, 2, 5];
+    maximo = Math.max(...numbers);
+    arreglo = Array.from(Array(maximo).keys());
+    console.log(arreglo)
+    arreglo2 = arreglo.map((n, i) => numbers.indexOf(i) < 0 && i);
+    console.log(arreglo2);
+    arreglo3 = arreglo2.filter(x => x);
+    console.log(arreglo3);
+    numbers = [8, 4, 9, 2, 5];
+    console.log("Arreglo original", numbers);
+    maximo = Math.max(...numbers);
+    arreglo = Array.from(Array(maximo).keys());
+    console.log("Genera arreglo a partir del 0 hatsa el nuemro maximo :", arreglo);
+    arreglo2 = arreglo.map((n, i) => numbers.indexOf(i) < 0 && i);
+    console.log("busca los numeros que no estan en el arreglo principal y pone en false los que si esta", arreglo2);
+    arreglo3 = arreglo2.filter(x => x);
+    console.log("me regresa un arreglo con los valores numericos", arreglo3);
+
 </script>
+
 </html>
