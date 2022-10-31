@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Sesion 05</title>
+</head>
+<style>
+  #app {
+    display: flex;
+  }
+
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 200px;
+    margin: auto;
+    text-align: center;
+  }
+
+  .card img {
+    max-width: 200px;
+  }
+
+  .button {
+    display: inline-block;
+    padding: 10px 0;
+    color: #fff;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+    text-decoration: none;
+  }
+
+  .button:hover {
+    opacity: 0.80;
+  }
+
+  details summary {
+    margin-bottom: 8px;
+  }
+
+  .button-repo {
+    display: inline-block;
+    padding: 8px 0;
+    color: #fff;
+    background-color: #242424;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+    text-decoration: none;
+  }
+
+  .button-repo:hover {
+    opacity: 0.80;
+  }
+
+  .card a{
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }  
+
+</style>
+
+<body>
+
+  <div id="app"></div>
+</body>
+<script>
+  const createUser = async (user) => {
+    const mainDiv = document.createElement("div");
+    mainDiv.classList.add("card");
+    const avatarImg = document.createElement("img");
+    avatarImg.src = user.avatar_url;
+    avatarImg.alt = "Foto de usuario";
+    mainDiv.appendChild(avatarImg);
+    const name = document.createElement("h2");
+    name.innerText = user.login;
+    mainDiv.append(name);
+
+    try {
+      const repos = await getUserRepos(user.repos_url);
+      addRepos(repos,mainDiv);  
+    } catch (error) {
+      throw new Error("Algo salio mal al obtener los repos")
+    }
+    const profile = document.createElement("a");
+    profile.innerText = "Github"
+    profile.href = user.url;
+    profile.target = "blank";
+    profile.classList.add("button");
+    mainDiv.appendChild(profile);
+    document.getElementById("app").appendChild(mainDiv)
+  }
+
+  const addRepos = (repos, card)=>{
+    const repoDetails = document.createElement("details");
+    const summaryRepo = document.createElement("summary");
+    summaryRepo.innerText ="Repositorios:"
+    summaryRepo.classList.add("button-repo");
+    repoDetails.appendChild(summaryRepo);
+    repos.forEach((repo)=>{
+      const link = document.createElement("a");
+      link.innerText = repo.name;
+      link.href = repo.html_url;
+      repoDetails.appendChild(link);
+    })
+    card.appendChild(repoDetails);
+  }
+
+  const getUsers = async (numberOfUsers = 4) => {
+    const response = await fetch("https://api.github.com/users");
+    const responseJson = await response.json()
+    return responseJson.slice(0, numberOfUsers);
+  }
+
+  const getUserRepos = async (url, numberOfUsers=4)=>{
+    const response = await fetch(url);
+    const responseJson = await response.json()
+    return responseJson.slice(0, numberOfUsers);
+  }
+
+  const mountUsers = async () => {
+    alert("En proceso")
+    try {
+      const users = await getUsers();
+      users.forEach(user => {
+        createUser(user);
+      });
+
+    } catch (error) {
+      alert("Fin");
+      throw new Error("Algo salio mal")
+    }
+    alert("Fin");
+  }
+
+  mountUsers();
+
+</script>
+
+</html>
