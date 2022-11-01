@@ -11,6 +11,7 @@ module.exports = {
     new HtmlWebpackPlugin({template: './src/index.html'})
   ],
   devServer: {
+    port : 4000,
     static: './dist'
   }
 }
