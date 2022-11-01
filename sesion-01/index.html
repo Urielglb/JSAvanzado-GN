@@ -1,76 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<script>
-   ////////////////////////////
-    
-    let ejemplo = "Todos me puden usar"
-
-   function foo(){
-        console.log("Hola desde foo", this);
-        let name = "John Doe";
-        console.log(name);
-        console.log(ejemplo);
-    }
-
-    function goo(){
-        let name = "Juanito Perez";
-        console.log(name);
-        console.log(ejemplo);
-    }
-
-    let persona = {
-        name: "Uriel",
-        ejemplo,
-        saluda: function(x){
-            console.log(this.name);
-        }
-    }
-
-    persona.saluda();
-
-    console.log(this);
-
-    var foo2 = foo.bind(persona)
-
-    foo();
-
-    foo2()
-
-    // foo.call(persona);
-
-
-
-    // foo();
-
-    for (let index = 0; index < 5; index++) {
-        let a = 0;
-        console.log(index);
-        a++;
-    }
-
-    //console.log("Aqui el index", index);
-
-    var hola = "Hola!";
-
-    function nombre(mnsj){
-        var mens = mnsj + "dias";
-        mensaje2(mens);
-    }
-
-    function mensaje2(mnsj2){
-        var mens2 = "buenos"
-
-        console.log(mnsj2 + " " + mens2);
-    }
-
-    nombre(hola);
-
-    ////////////////////////////
-</script>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>Ejemplo 3: Usando call</title>
+  </head>
+  <body>
+    <h1>Sesión 1</h1>
+    <ul>
+      <li>¿Qué es scope?</li>
+      <li>Scope global</li>
+      <li>Scope local</li>
+      <li>Execution context</li>
+      <li>¿Cuál es el valor de this?</li>
+      <li>This en nuevas instancias</li>
+      <li>Cambiar el contexto de this</li>
+    </ul>
+    <script type="text/javascript" src="./ejemplo-4.js"></script>
+  </body>
 </html>
