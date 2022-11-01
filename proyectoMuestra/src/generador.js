@@ -1,5 +1,3 @@
-
-
 function constructR(recipe){
     const cont = document.createElement("div");
     const img = document.createElement("img");
