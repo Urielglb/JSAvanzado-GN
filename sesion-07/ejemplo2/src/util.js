@@ -1,1 +1,4 @@
-export const compact = (array) => array.filter((element) => !!element)
+export const compact = (array) => {
+    if(!array.length) throw Error('Array cannot be empty')
+    return array.filter((element) => !!element)
+}

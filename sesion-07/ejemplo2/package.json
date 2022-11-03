@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "webpack --mode development",
     "build": "webpack",
-    "start": "webpack-dev-server --mode development --open"
+    "start": "webpack-dev-server --mode development --open",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -15,10 +16,19 @@
     "@babel/cli": "^7.19.3",
     "@babel/core": "^7.19.6",
     "@babel/preset-env": "^7.19.4",
+    "babel-jest": "^29.2.2",
     "babel-loader": "^9.0.1",
     "html-webpack-plugin": "^5.5.0",
+    "jest": "^29.2.2",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.11.1"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "coverageReporters": ["html"],
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    }
   }
 }
