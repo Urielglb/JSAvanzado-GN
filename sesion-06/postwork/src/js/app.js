@@ -1,5 +1,3 @@
-import "core-js/stable";
-import "regenerator-runtime/runtime";
 import "../css/index.css"
 import { getRandomUsers, getUsers } from "./api.js";
 import { mountUsers } from "./dom.js";
