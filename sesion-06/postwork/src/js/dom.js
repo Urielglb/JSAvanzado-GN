@@ -1,77 +1,6 @@
-<!DOCTYPE html>
-<html>
+import { getUserRepos } from "./api";
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Sesion 05</title>
-</head>
-<style>
-  #app {
-    display: flex;
-  }
-
-  .card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    max-width: 200px;
-    margin: auto;
-    text-align: center;
-  }
-
-  .card img {
-    max-width: 200px;
-  }
-
-  .button {
-    display: inline-block;
-    padding: 10px 0;
-    color: #fff;
-    background-color: #000;
-    text-align: center;
-    cursor: pointer;
-    width: 100%;
-    font-size: 18px;
-    text-decoration: none;
-  }
-
-  .button:hover {
-    opacity: 0.80;
-  }
-
-  details summary {
-    margin-bottom: 8px;
-  }
-
-  .button-repo {
-    display: inline-block;
-    padding: 8px 0;
-    color: #fff;
-    background-color: #242424;
-    text-align: center;
-    cursor: pointer;
-    width: 100%;
-    font-size: 18px;
-    text-decoration: none;
-  }
-
-  .button-repo:hover {
-    opacity: 0.80;
-  }
-
-  .card details a{
-    display: block;
-    text-decoration: none;
-    color: inherit;
-  }  
-
-</style>
-
-<body>
-
-  <div id="app"></div>
-</body>
-<script>
-  const createUser = async (user) => {
+const createUser = async (user) => {
     const mainDiv = document.createElement("div");
     mainDiv.classList.add("card");
     const avatarImg = document.createElement("img");
@@ -113,10 +42,10 @@
   }
 
 
-  const mountUsers = async () => {
+  const mountUsers = async (getUsersFunction) => {
     alert("En proceso")
     try {
-      const users = await getRandomUsers();
+      const users = await getUsersFunction();
       users.forEach(user => {
         createUser(user);
       });
@@ -128,8 +57,6 @@
     alert("Fin");
   }
 
-  mountUsers();
-
-</script>
-
-</html>
+  export {
+    mountUsers
+  }
