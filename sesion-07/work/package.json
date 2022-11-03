@@ -3,11 +3,17 @@
   "version": "1.0.0",
   "description": "Clase de Bedu",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --mode development --open"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "html-webpack-plugin": "^5.5.0",
     "webpack": "^5.74.0",
-    "webpack-cli": "^4.10.0"
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.11.1"
   }
 }
