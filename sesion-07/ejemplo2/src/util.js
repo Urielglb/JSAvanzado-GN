@@ -1,0 +1,1 @@
+export const compact = (array) => array.filter((element) => !!element)
