@@ -1,0 +1,24 @@
+{
+  "name": "sesion-08",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/core": "^7.19.6",
+    "@babel/preset-env": "^7.19.4",
+    "babel-jest": "^29.2.2",
+    "jest": {
+      "collectCoverage": true,
+      "coverageReporters": ["html"],
+      "transform": {
+        "^.+\\.jsx?$": "babel-jest"
+      }
+    }
+  }
+}
